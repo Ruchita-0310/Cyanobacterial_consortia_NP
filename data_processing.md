@@ -81,3 +81,21 @@ MetaErg
 ```
 \time  singularity exec --bind /work/ebg_lab/referenceDatabases/metaerg_db_V214:/databases --bind /Refinement_pypolca_DL1/metawrap_50_10_bins:/data  --writable /work/ebg_lab/software/metaerg-v2.5.2/sandbox_metaerg_2.5.4/ metaerg --database_dir /databases --contig_file /data --file_extension .fa
 ```
+## Coverage & sequencing depth
+CoverM
+```
+**#for long reads**
+#for contigs
+coverm genome --single Filtered_500_10_DL1_SodaLakes_LongReads.fastq.gz --mapper minimap2-ont --min-read-percent-identity 95 --genome-fasta-files medaka.polypolish.polca.DL1.assembly.fasta/pypolca_corrected.fasta
+#for MAGS
+coverm genome --single Filtered_500_10_DL1_SodaLakes_LongReads.fastq.gz --mapper minimap2-ont --min-read-percent-identity 95 --genome-fasta--directory Refinement_pypolca_DL1/metawrap_50_10_bins/ --genome-fasta-extension fa
+#for HQMAGs
+coverm genome --single Filtered_500_10_DL1_SodaLakes_LongReads.fastq.gz --mapper minimap2-ont --min-read-percent-identity 95 --genome-fasta--directory HQ_mags/ --genome-fasta-extension fa
+**#for short reads**
+#for contigs
+coverm genome -1 /path/to/short/reads -2 /path/to/short/reads --mapper bwa-mem --min-read-percent-identity 95 --genome-fasta-files medaka.polypolish.polca.DL1.assembly.fasta/pypolca_corrected.fasta
+#for MAGS
+coverm genome -1 /path/to/short/reads -2 /path/to/short/reads --mapper bwa-mem --min-read-percent-identity 95 --genome-fasta--directory Refinement_pypolca_DL1/metawrap_50_10_bins/ --genome-fasta-extension fa
+#for HQMAGs
+coverm genome -1 /path/to/short/reads -2 /path/to/short/reads --mapper bwa-mem --min-read-percent-identity 95 --genome-fasta--directory HQ_mags/ --genome-fasta-extension fa
+```
