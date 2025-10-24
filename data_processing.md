@@ -10,11 +10,13 @@ dorado basecaller --min-qscore 8 sup pod5/ > DL1_SodaLakes_basecalling.bam
 bedtools bamtofastq -i DL1_SodaLakes_basecalling.bam -fq DL1_SodaLakes_LongReads.fastq
 ```
 ## Quality control for Long reads
+Chopper
 ```
 ####### Run your script #########################
 gunzip -c DL1_SodaLakes_LongReads.fastq.gz | chopper -q 10 -l 500 | gzip > Filtered_500_10_DL1_SodaLakes_LongReads.fastq.gz
 ```
 ## Long-read Assembly
+MetaMDBG
 ```
 ####### Run your script #########################
 metaMDBG asm --out-dir metaMDBG_assembly_DL1 --in-ont Filtered_500_10_DL1_SodaLakes_LongReads.fastq.gz --threads 8
@@ -75,6 +77,7 @@ gtdbtk classify_wf --genome_dir Refinement_pypolca_DL1/metawrap_50_10_bins/ \
 checkm2 predict -t 30 -x fa --input ./ --output-directory ./CheckM2 
 ```
 ## Annotation
+MetaErg
 ```
 \time  singularity exec --bind /work/ebg_lab/referenceDatabases/metaerg_db_V214:/databases --bind /Refinement_pypolca_DL1/metawrap_50_10_bins:/data  --writable /work/ebg_lab/software/metaerg-v2.5.2/sandbox_metaerg_2.5.4/ metaerg --database_dir /databases --contig_file /data --file_extension .fa
 ```
