@@ -1,0 +1,60 @@
+# Converted from SM_heatmap_soda.ipynb
+# Clean Python script generated from the uploaded Jupyter notebook.
+# Notebook outputs were removed from the cleaned .ipynb version.
+
+# %% Cell 1
+import pandas as pd
+import matplotlib.pyplot as plt
+import numpy as np
+
+# Load the CSV file instead of hardcoding data
+file_name = "/Users/ruchitasolanki/Downloads/Cyano_paper/RNA_data_analysis/soda_sms.csv"
+df = pd.read_csv(file_name)
+
+# Set 'Category' as the index for easier plotting
+df = df.set_index('Category')
+
+# Clean the data: remove '%' and convert to float
+for col in df.columns:
+    df[col] = df[col].str.rstrip('%').astype(float)
+
+# Create the heatmap
+# Adjusted the figure size to make the cells thinner by making the plot much wider relative to its height
+fig, ax = plt.subplots(figsize=(14, 6))
+# Changed the colormap to 'RdBu_r' for high values (dark red) and low values (dark blue)
+im = ax.imshow(df.values, cmap='RdBu_r')
+
+# Set labels for the axes
+ax.set_xticks(np.arange(len(df.columns)))
+ax.set_yticks(np.arange(len(df.index)))
+ax.set_xticklabels(df.columns)
+ax.set_yticklabels(df.index)
+
+# Rotate the tick labels and set their alignment.
+# Changed rotation from 45 to 0 for a straight orientation
+plt.setp(ax.get_xticklabels(), rotation=0, fontsize=8)
+
+# Add x and y axis labels as requested
+ax.set_xlabel('MAGs' , fontsize=12, fontweight='bold')
+ax.set_ylabel('Genes Expressed (TPM)', fontsize=12, fontweight='bold')
+
+# Add a title and colorbar
+ax.set_title(" ")
+cbar = ax.figure.colorbar(im, ax=ax)
+# Updated colorbar label to include '%'
+cbar.ax.set_ylabel("Value (%)", rotation=-90, va="bottom")
+
+# Adjust the plot to ensure everything fits
+# fig.tight_layout() # Commented out to use plt.subplots_adjust() instead
+plt.subplots_adjust(left=0.1, right=0.9, top=0.9, bottom=0.1)
+
+# Save the plot
+# You can change the file path to where you want to save the plot
+plot_save_location = "/Users/ruchitasolanki/Downloads/Cyano_paper/RNA_data_analysis/SMs_result_finalv7.png"
+
+if plot_save_location:
+    plt.savefig(plot_save_location, bbox_inches='tight', dpi=2000)
+    print(f"Plot saved to {plot_save_location}")
+
+# Show the plot
+plt.show()
