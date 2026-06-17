@@ -10,5 +10,6 @@ The full step-by-step workflow is provided in:
 ```text
 .
 ├── README.md
-└── data_analysis.md
+├── data_analysis.md
+└── scripts/
 ```
