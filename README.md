@@ -7,9 +7,15 @@ The full step-by-step workflow is provided in:
 [`data_analysis.md`](data_analysis.md)
 
 ## Repository structure
+
 ```text
 .
 ├── README.md
 ├── data_analysis.md
 └── scripts/
+    ├── SM_heatmap_soda.ipynb
+    ├── general_bubble.ipynb
+    ├── miseq_bubble_plot.ipynb
+    ├── soda_final_Metaerg_key.ipynb
+    └── stacked_barchart.py
 ```
