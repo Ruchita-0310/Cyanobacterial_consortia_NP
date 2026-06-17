@@ -1,4 +1,4 @@
-# Cyanobacterial Metagenome Assembly and MAG Analysis
+# Cyanobacterial Consortia MAGs: Long-read Metagenome Assembly and Genome Annotation
 This document describes the workflow used to process Oxford Nanopore long reads and Illumina short reads from the DL1 soda lake metagenomic sample. The workflow includes basecalling, FASTQ conversion, long-read quality filtering, long-read assembly, hybrid polishing, MAG recovery, bin refinement, taxonomic classification, quality assessment, genome annotation, and coverage estimation.
 ## Overview
 The sequencing run used the Ligation Sequencing Kit V14 (`SQK-LSK114`) and 1 µg of high molecular weight DNA. The run produced 73 POD5 files, corresponding to approximately 12.5 Gb of sequence data, with a read N50 of approximately 7.54 kb. Basecalling was performed with Dorado using the `sup` model and a minimum quality score of 8 on a GPU partition.
